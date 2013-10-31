@@ -130,7 +130,7 @@ jQuery(function ($) {
     			id = $(this).closest('li').data('id');
 
     		$.each(storage, function(i, el) {
-    			if (el.id === id) {
+    			if (el && el.id === id) {
     				App.storage.splice(i, 1);
 
     				$.each(App.friendStorage, function(i, el) {

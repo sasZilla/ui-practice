@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Хобби</title>
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<section class="main">
+		<h1 class="header">О себе</h1>
+		<h4 class="with-pointer"><div>Хобби</div></h4>
+		<p class="padding-left-16"><input type="text" name="newHobby" id="newHobby" placeholder="Введите текст"/></p>
+		<ul class="hobbies myHobbies" id="myHobbies">
+			<li>Хоккей</li>
+			<li>Высокоточная вёрстка под старые версии Microsoft Internet Explorer, начиная с версии 5.01</li>
+			<li class="more padding-left-16">еще 3 интереса</li>
+		</ul>
+
+		<h1 class="header">Интересы друга</h1>
+		<h4 class="with-pointer"><div>Хобби</div></h4>
+		<ul class="hobbies myFriendHobbies" id="myFriendHobbies">
+			<li data-id="basketball"><i class="icon-add"></i>Баскетбол<i class="icon-ok"></i><i class="icon-warn"></i></li>
+			<li data-id="photoshopcut">Нарезка Photoshop/Fireworks макетов на скорость, в экстримельных условиях, на природе</li>
+			<li class="more padding-left-16">еще 3 интереса</li>
+		</ul>
+	</section>
+
+	<script type="text/html" id="hobbyTmpl">
+		<% for (var i = 0, len = hobbies.length; i < len; i++) { %>
+			<% if (hobbies[i].visible) { %>
+				<li data-id="<%=hobbies[i].id%>" class="fade-in">
+					<i class="icon remove fade"></i>
+					<div class="title"><%=hobbies[i].title%></div>
+					<div class="right absolute whiter"></div></div>
+				</li>
+			<% } %>
+		<% } %>
+		<li class="more padding-left-16">еще 3 интереса</li>
+	</script>
+
+	<script type="text/html" id="hobbyFriendTmpl">
+		<% for (var i = 0, len = hobbies.length; i < len; i++) { %>
+			<% if (hobbies[i].visible) { %>
+				<% if (hobbies[i].hasRelation) { %>
+					<li data-id="<%=hobbies[i].id%>" class="padding-left-16 fade-in">
+						<div class="title"><%=hobbies[i].title%></div>
+						<div class="message"><i class="icon ok"></i>добавлено в ваши увлечения</div>
+						<div class="right absolute whiter"></div>
+					</li>
+				<% } else { %>
+					<li data-id="<%=hobbies[i].id%>" class="fade-in">
+						<i class="icon add fade"></i>
+						<div class="title"><%=hobbies[i].title%></div>
+						<div class="right absolute fade warning"><div class="all-white"><i class="icon warn"></i>пожаловаться</div></div>
+						<div class="right absolute whiter"></div>
+					</li>
+				<% } %>
+			<% } %>
+		<% } %>
+		<li class="more padding-left-16">еще 3 интереса</li>
+	</script>
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
